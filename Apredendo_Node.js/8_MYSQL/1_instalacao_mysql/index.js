@@ -25,7 +25,7 @@ conn.connect(function(err) {
         console.log(err)
     }
 
-    console.log('Vasco porra!')
+    console.log('Consegui krl!')
 
     app.listen(3000)
 })
