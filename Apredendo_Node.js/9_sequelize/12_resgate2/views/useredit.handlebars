@@ -1,0 +1,47 @@
+<h1>Editar {{user.name}}.</h1>
+<form action="/users/update" method="POST" class="form">
+<input type="hidden" name="id" value="{{user.id}}">
+  <div class="form-control">
+    <label for="name">Nome:</label>
+    <input type="text" name="name" placeholder="Digite o nome do jogadr."value="{{user.name}}">
+  </div>
+  <div class="form-control">
+    <label for="occupation">Posição:</label>
+    <input type="text" name="occupation" placeholder="Digite a posição." value="{{user.occupation}}">
+  </div>
+  <div class="form-control form-checkbox">
+    {{#if user.newsletter}}
+      <input type="checkbox" name="newsletter" checked>
+    {{else}}
+      <input type="checkbox" name="newsletter" >
+    {{/if}}
+    <label for="newsletter">Titular?</label>
+  </div>
+  <input type="submit" value="Editar">
+</form>
+<div class="carreira-container">
+  <h2>Carreira:</h2>
+  <form action="/carreiras/create" method="POST">
+  <input type="hidden" name="UserId" value="{{user.id}}">
+  <div class="form-control">
+    <label for="base">Base:</label>
+    <input type="text" name="base" placeholder="Digite a base do jogador:">
+  </div>
+  <div class="form-control">
+    <label for="titulos">Títulos:</label>
+    <input type="text" name="titulos" placeholder="Digite o número de titulos do jogador:">
+  </div>
+  <div class="form-control">
+    <label for="primeiroclube">Primeiro Clube Profissional:</label>
+    <input type="text" name="primeiroclube" placeholder="Digite o primeiro clube do jogador:">
+  </div>
+  <input type="submit" value="Incluir Carreira">
+
+  </form>
+  <div class="carreira-list">
+    <h2>Carreira do Atleta.</h2>
+    {{#each user.Carreiras}}
+      <p>#{{this.id}} - {{this.base}} - {{this.titulos}} - {{this.primeiroclube}}</p>
+    {{/each}}
+  </div>
+</div>
